@@ -75,10 +75,14 @@ function Dashboard() {
             console.log('Authentication required... Redirecting to login.');
             navigate('/login');
         } else {
+            const intervalId = setInterval(syncData, 5 * 60 * 1000); // 5 minutes
+
             apiClient.refreshSession().then((refreshed: boolean) => {
                 console.log(`ID Token ${refreshed ? 'refreshed' : 'not refreshed'}`);
                 syncData();
             });
+
+            return () => clearInterval(intervalId);
         }
     }, []);
 
@@ -152,6 +156,16 @@ function Dashboard() {
             {/* <SpaceHud /> */}
 
             {/* Footer */}
+            <footer className="bg-gray-800 p-4 mt-8">
+                <div className="container mx-auto">
+                    <p className="text-white">Last updated {new Date().toLocaleString('en-US', {
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: true
+                        })}
+                    </p>
+                </div>
+            </footer>
         </>
     );
 }
