@@ -19,6 +19,9 @@ function Dashboard() {
     const context = useAppContext();
 
     const [trackValues, setTrackValues] = useState<Array<ApiEvent>>(new Array());
+    const [todaysTracks, setTodaysTracks] = useState<Array<ApiEvent>>(new Array());
+    const [sevenDayTracks, setSevenDayTracks] = useState<Array<ApiEvent>>(new Array());
+
     const [totalDiaperCount, setTotalDiaperCount] = useState(0);
     const [totalFeedCount, setTotalFeedCount] = useState(0);
     const [totalSleepCount, setTotalSleepCount] = useState(0);
@@ -31,6 +34,7 @@ function Dashboard() {
     const updateDashboard = () => {
         const trackz = localStorageManager.getTrackz();
         const trackValues = Object.values(trackz);
+        //const todaysTracks = trackValues.filter(track => { track.beginDt >= new})
         setTrackValues(trackValues);
 
         const totalDiapers = dataManager.getEventsByType(trackValues, 'DIAPER');

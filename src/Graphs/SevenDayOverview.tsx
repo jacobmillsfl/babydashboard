@@ -94,7 +94,7 @@ function SevenDayOverview(props: { trackValues: Array<ApiEvent> }) {
           },
           { type: 'bar' }
         ]}
-        layout={{ barmode: 'stack', title: '7 Day Overview', height: 630}}
+        layout={{ barmode: 'group', title: '7 Day Overview', height: 630}}
       />
     </div>
   );
