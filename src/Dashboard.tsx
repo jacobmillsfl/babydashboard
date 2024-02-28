@@ -137,7 +137,7 @@ function Dashboard() {
             <div className="container mx-auto mt-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-white p-4 shadow-md rounded-md">
-                        <h2>Total Daipers</h2>
+                        <h2>Total Diapers</h2>
                         <p className="text-center text-5xl mb-1">{totalDiaperCount}</p>
                         <hr />
                         <p className="text-sm mt-1 italic">{totalDiapersFooter}</p>
