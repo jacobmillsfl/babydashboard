@@ -67,8 +67,19 @@ function SevenDayOverview(props: { trackValues: Array<ApiEvent> }) {
     napsThisWeek.push(naps);
   }
 
+  // Calculate average values for each group
+  const averageDiapers = diapersThisWeek.reduce((acc, val) => acc + val, 0) / diapersThisWeek.length;
+  const averageFeeds = feedsThisWeek.reduce((acc, val) => acc + val, 0) / feedsThisWeek.length;
+  const averageNaps = napsThisWeek.reduce((acc, val) => acc + val, 0) / napsThisWeek.length;
+
+  // Create arrays to plot the average lines
+  const averageLineX = pastSevenDayNames;
+  const averageLineYDiapers = Array.from({ length: pastSevenDayNames.length }, () => averageDiapers);
+  const averageLineYFeeds = Array.from({ length: pastSevenDayNames.length }, () => averageFeeds);
+  const averageLineYNaps = Array.from({ length: pastSevenDayNames.length }, () => averageNaps);
+
   return (
-    <div className="overflow-x-scroll">
+    <div className="overflow-hidden">
       <Plot
         data={[
           {
@@ -92,7 +103,30 @@ function SevenDayOverview(props: { trackValues: Array<ApiEvent> }) {
             type: 'bar',
             marker: { color: 'rgba(75, 192, 192, 0.7)' }
           },
-          { type: 'bar' }
+          { 
+            type: 'scatter', 
+            mode: 'lines',
+            x: averageLineX,
+            y: averageLineYDiapers,
+            name: 'Average Diapers',
+            line: { dash: 'dot', width: 2, color: 'rgba(255, 99, 132, 0.6)' } // Customize line style here
+          },
+          { 
+            type: 'scatter', 
+            mode: 'lines',
+            x: averageLineX,
+            y: averageLineYFeeds,
+            name: 'Average Feeds',
+            line: { dash: 'dot', width: 2, color: 'rgba(54, 162, 235, 0.6)' } // Customize line style here
+          },
+          { 
+            type: 'scatter', 
+            mode: 'lines',
+            x: averageLineX,
+            y: averageLineYNaps,
+            name: 'Average Naps',
+            line: { dash: 'dot', width: 2, color: 'rgba(75, 192, 192, 0.6)' } // Customize line style here
+          }
         ]}
         layout={{ barmode: 'group', title: '7 Day Overview', height: 630}}
       />

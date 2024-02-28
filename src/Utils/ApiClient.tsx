@@ -89,9 +89,7 @@ class ApiClient {
             }
         };
 
-        let requestBody = prevSyncKey ? requestData : requestDataSync;
-
-        console.log("Request data", requestData)
+        let requestBody = prevSyncKey ? requestDataSync : requestData;
 
         const headers = new Headers();
         headers.append('Authorization', `Bearer ${bearerToken}`);
@@ -242,6 +240,7 @@ class ApiClient {
                         reject(reason);
                     });
             } else {
+                console.log("Session token still valid");
                 resolve(false); // Current token not expired
             }
         });

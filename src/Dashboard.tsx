@@ -124,7 +124,7 @@ function Dashboard() {
             <TodaysSummary trackValues={trackValues} />
 
             <div className="container mx-auto mt-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="bg-white p-4 shadow-md rounded-md">
+                <div className="bg-white p-4 shadow-md rounded-md overflow-hidden">
                     <SleepGraph sleepEvents={trackValues.filter((x) => x.type === 'SLEEP') as Array<SleepEvent>} />
                     <FeedGraph feedEvents={trackValues.filter((x) => x.type === 'FEED') as Array<FeedEvent>} />
                     <DiaperGraph diaperEvents={trackValues.filter((x) => x.type === 'DIAPER') as Array<DiaperEvent>} />

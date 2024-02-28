@@ -25,7 +25,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
         port: process.env.PORT === undefined ? 3000 : +process.env.PORT
       },
       optimizeDeps: {
-        exclude: ['path']
+        exclude: ['path'],
       },
       define: {
         // Define environment variables for use in client-side code
@@ -55,7 +55,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
       port: process.env.PORT === undefined ? 3000 : +process.env.PORT
     },
     optimizeDeps: {
-      exclude: ['path']
+      exclude: ['path'],
     },
     define: {
       // Define environment variables for use in client-side code

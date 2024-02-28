@@ -28,6 +28,8 @@ class DataManager {
     const nextSyncToken = this.localStorageManager.getNextSyncToken();
     const familyKey = this.localStorageManager.getFamilyKey();
     return new Promise<boolean>((resolve, reject) => {
+      this.apiClient.refreshSession().then((refreshed) => {
+        console.log(`Session ${refreshed ? 'refreshed' : 'still active'}`)
         this.apiClient
           .getStats(idToken, this.firebaseKey, familyKey, nextSyncToken)
           .then((statsResponse) => {
@@ -47,6 +49,7 @@ class DataManager {
             console.error('Error occurred during token refresh:', error);
             resolve(false);
           });
+      });
     });
   }
 

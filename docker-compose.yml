@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  dashboard:
+    container_name: baby-dashboard
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3002:80

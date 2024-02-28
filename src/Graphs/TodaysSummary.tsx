@@ -122,7 +122,7 @@ const TodaysSummary: React.FC<{ trackValues: Array<ApiEvent> }> = (props) => {
             🍼
               </span>
               
-              <p className="text-lg">{bottleOunces} Oz</p>
+              <p className="text-lg">{bottleOunces.toPrecision(2)} Oz</p>
             </div>
           </div>
           <hr />

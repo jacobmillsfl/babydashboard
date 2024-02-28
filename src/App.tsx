@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AppContextProvider, useAppContext } from './Contexts/AppContext';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import spaceImg from "./assets/space_05.mp4";
 
 const CommonLayout: React.FC = ({ children }) => {
   return (
     <div>
       <div className="">
         <video className="fixed top-0 left-0 w-full h-full object-cover z-[-50]" autoPlay muted loop>
-          <source src="/assets/space_05.mp4" type="video/mp4" />
+          <source src={spaceImg} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <nav className="bg-slate-800 p-4">
